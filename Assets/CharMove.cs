@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharMove : MonoBehaviour {
 	Animator animator;
 	CharacterController cc;
+    AudioSource audio;
 
 	Vector3 dir = Vector3.zero;
 	public float gravity = 20.0f;
@@ -15,6 +16,7 @@ public class CharMove : MonoBehaviour {
 	void Start () {
 		animator = GetComponent<Animator> ();
 		cc = GetComponent<CharacterController> ();
+        audio = GetComponent<AudioSource>();
 	}
 
 
@@ -46,6 +48,11 @@ public class CharMove : MonoBehaviour {
 		}
 
 	}
+
+    public void OnJumpStart() {
+        dir.y = jumpPower;
+        audio.Play();
+    }
 	
 }
 
